@@ -1,0 +1,64 @@
+Peter Andrew Rose --- parose@calpoly.edu --- 6-7-2016 --- github.com/parose
+
+aLook 
+   Command line utility that prints out all lines of a file beginning
+   with a given string. Based on the standard Unix command line program look.
+
+COMPILATION
+   Included with aLook is a makefile that is used to build the 
+   program. Running make compiles the program using gcc and the
+   -Wall, -Werror, and -O3 flags. The name of the built 
+   executable is aLook. Running "make clean" removes this executable.
+
+USAGE
+   General usage of aLook is of the form:
+      aLook [-df] [-t termchar] string [file]
+   
+   aLook uses a binary search to find lines in |file| that begin with |string|.
+   All files being searched with aLook are required to have been sorted using
+   the command line program sort, with sort haivng been passed the same 
+   flags -d and -f that aLook recieves.
+
+   aLook specifies three command line flags. The functions of these flags are
+   as follows:
+      
+      -d : aLook only compares alphanumeric characters in the search string
+           and file. 
+            
+           EXAMPLE: running "aLook -d dog" returns lines in the file starting
+                    with words like "dogged" and "dog-eared", but also words
+                    such as "do-gooders"
+
+      -f : aLook ignores case when comparing the search string to lines in the
+           file. 
+
+           EXAMPLE: running "aLook -f cat" would return lines starting with
+                    "CAT" as well as "cat"
+
+      -t : The -t flag requires an additional argument in the form of a 
+           terminating character. The search string is then truncated at the
+           first occurrence of this character.
+
+           EXAMPLE: running "aLook -t t catamaran" returns lines in the file
+                    starting with the string "cat"
+
+   It is important to note that aLook does not require a file to be specified.
+   If the |file| argument is left blank, aLook searches the dictionary file
+   /usr/share/dict/words. In this case, the -d and -f arguments are on by
+   default.
+
+RETURN VALUE
+   aLook returns 0 if any number of lines in the file have been printed, 1
+   if no lines in the file begin with the search string, or 2 if there is an
+   error.
+
+ERRORS
+   Possible errors when running aLook include:
+
+      -Improper specification of command line arguments, in which case aLook
+       prints a usage message before exiting.
+
+      -Failure to find the specified file in the current directory.
+
+      -Failure to read the contents of the file into memory
+
