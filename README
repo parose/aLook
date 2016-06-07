@@ -1,5 +1,7 @@
 Peter Andrew Rose --- parose@calpoly.edu --- 6-7-2016 --- github.com/parose
 
+Project at https://github.com/parose/aLook
+
 aLook 
    Command line utility that prints out all lines of a file beginning
    with a given string. Based on the standard Unix command line program look.
